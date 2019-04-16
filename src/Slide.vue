@@ -54,16 +54,27 @@
           : Math.floor(currentSlide + siblings - 1);
       },
       isActive() {
-        return this.index >= this.lower  && this.index <= this.upper;
+        return this.correctIndex >= this.lower  && this.correctIndex <= this.upper;
       },
       isPrev() {
-        return this.index <= this.lower - 1;
+        return this.correctIndex <= this.lower - 1;
       },
       isNext() {
-        return this.index >= this.upper + 1;
+        return this.correctIndex >= this.upper + 1;
       },
       isCurrent() {
-        return this.index === this.$hooper.currentSlide;
+        return this.correctIndex === this.$hooper.currentSlide;
+      },
+      correctIndex() {
+        let index = 0;
+        
+        if (this.$attrs.index) {
+          index = this.$attrs.index - 1;
+        } else {
+          index = this.index
+        }
+
+        return index
       }
     },
   }
