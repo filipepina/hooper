@@ -27,6 +27,10 @@
       index: {
         type: Number,
         default: 0
+      },
+      slideIndex: {
+        type: Number,
+        default: 0
       }
     },
     computed: {
@@ -68,10 +72,10 @@
       correctIndex() {
         let index = 0;
         
-        if (this.$attrs.index) {
-          index = this.$attrs.index - 1;
+        if (this.slideIndex) {
+          index = this.slideIndex - 1;
         } else {
-          index = this.index
+          index = this.index;
         }
 
         return index
